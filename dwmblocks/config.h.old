@@ -1,0 +1,7 @@
+#define CMDLENGTH 45
+#define DELIMITER " | "
+#define CLICKABLE_BLOCKS
+
+const Block blocks[] = {
+	BLOCK("/home/chester/.local/bin/dwmblocks-time.sh",    5, 19),
+};

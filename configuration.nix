@@ -3,9 +3,9 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 # TODO:
 #   pywal xresources template
+#   wallpapers
 #   sxhkd config
 #   bash config
-#   st
 
 { config, lib, pkgs, ... }:
 
@@ -15,6 +15,7 @@ let
     dwm = (import ./dwm/dwm.nix { pkgs = pkgs; });
     st = (import ./st/st.nix { pkgs = pkgs; });
     dmenu = (import ./dmenu/dmenu.nix { pkgs = pkgs; });
+    dwmblocks = (import ./dwmblocks/dwmblocks.nix { pkgs = pkgs; });
   };
 in
 
@@ -54,6 +55,7 @@ in
   services.xserver.displayManager.startx.extraCommands =
     ''
     ${pkgs.sxhkd}/bin/sxhkd &
+    ${pkgs.dwmblocks}/bin/dwmblocks &
     ${pkgs.pywal}/bin/wal -i /home/chester/Wallpapers
     exec ${localPkgs.dwm}/bin/dwm
     '';
@@ -87,11 +89,16 @@ in
   };
 
   programs.firefox.enable = true;
+  
+  programs.bash.promptInit =
+    ''
+    PS1='\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] '
+    '';
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     git
     vis
@@ -101,6 +108,10 @@ in
     localPkgs.hello-world
     localPkgs.st
     localPkgs.dmenu
+    racket
+    xdo
+    xdotool
+    bsdgames
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
