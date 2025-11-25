@@ -15,4 +15,6 @@ cp -r $files/* $out/build
 
 cd $out/build
 make
-cp $out/build/st $out/bin
+cp $out/build/dmenu $out/bin
+cp $out/build/dmenu_path $out/bin
+cp $out/build/dmenu_run $out/bin

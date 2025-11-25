@@ -14,6 +14,7 @@ let
     hello-world = (import ./hello-world/hello-world.nix { pkgs = pkgs; });
     dwm = (import ./dwm/dwm.nix { pkgs = pkgs; });
     st = (import ./st/st.nix { pkgs = pkgs; });
+    dmenu = (import ./dmenu/dmenu.nix { pkgs = pkgs; });
   };
 in
 
@@ -99,6 +100,7 @@ in
     pciutils
     localPkgs.hello-world
     localPkgs.st
+    localPkgs.dmenu
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
