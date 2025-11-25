@@ -3,7 +3,7 @@ let
   fs = pkgs.lib.fileset;
 in
 derivation {
-  name = "dwm";
+  name = "st";
   builder = "${pkgs.bash}/bin/bash";
   args = [ ./build.sh ];
   system = "x86_64-linux";
@@ -14,8 +14,11 @@ derivation {
     gnumake
     freetype.dev
     freetype
+    fontconfig.out
+    fontconfig.bin
     fontconfig.dev
     fontconfig.lib
+    pkg-config
     xorg.libX11.dev
     xorg.libX11
     xorg.libXft.dev

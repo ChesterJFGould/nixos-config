@@ -1,8 +1,21 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# TODO:
+#   pywal xresources template
+#   sxhkd config
+#   bash config
+#   st
 
 { config, lib, pkgs, ... }:
+
+let
+  localPkgs = {
+    hello-world = (import ./hello-world/hello-world.nix { pkgs = pkgs; });
+    dwm = (import ./dwm/dwm.nix { pkgs = pkgs; });
+    st = (import ./st/st.nix { pkgs = pkgs; });
+  };
+in
 
 {
   imports =
@@ -34,10 +47,15 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = false;
-
-
-  
+  services.xserver.enable = true;
+  services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.startx.generateScript = true;
+  services.xserver.displayManager.startx.extraCommands =
+    ''
+    ${pkgs.sxhkd}/bin/sxhkd &
+    ${pkgs.pywal}/bin/wal -i /home/chester/Wallpapers
+    exec ${localPkgs.dwm}/bin/dwm
+    '';
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -76,6 +94,11 @@
     wget
     git
     vis
+    firefox
+    usbutils
+    pciutils
+    localPkgs.hello-world
+    localPkgs.st
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
