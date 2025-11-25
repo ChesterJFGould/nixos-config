@@ -18,3 +18,4 @@ make
 cp $out/build/dmenu $out/bin
 cp $out/build/dmenu_path $out/bin
 cp $out/build/dmenu_run $out/bin
+cp $out/build/stest $out/bin
