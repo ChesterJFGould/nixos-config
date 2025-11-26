@@ -5,7 +5,6 @@
 #   pywal xresources template
 #   wallpapers
 #   sxhkd config
-#   bash config
 
 { config, lib, pkgs, ... }:
 
@@ -94,6 +93,14 @@ in
     ''
     PS1='\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] '
     '';
+  programs.bash.interactiveShellInit =
+    ''
+    set -o vi
+    (cat ~/.cache/wal/sequences &)
+    '';
+  programs.bash.shellAliases = {
+    v = "vis";
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
