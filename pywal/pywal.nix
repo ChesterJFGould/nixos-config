@@ -14,10 +14,7 @@ buildPythonPackage rec {
 
   src = ./.;
 
-  patches = [
-    ./convert.patch
-    ./feh.patch
-  ];
+  patches = [];
 
   postPatch = ''
     substituteInPlace pywal/backends/wal.py --subst-var-by convert "${imagemagick}/bin/convert"

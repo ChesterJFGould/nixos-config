@@ -21,15 +21,7 @@ def imagemagick(color_count, img, magick_command):
 
 def has_im():
     """Check to see if the user has im installed."""
-    if shutil.which("magick"):
-        return ["magick", "convert"]
-
-    if shutil.which("convert"):
-        return ["convert"]
-
-    logging.error("Imagemagick wasn't found on your system.")
-    logging.error("Try another backend. (wal --backend)")
-    sys.exit(1)
+    return ["@convert@"]
 
 
 def gen_colors(img):
