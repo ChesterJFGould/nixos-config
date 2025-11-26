@@ -61,7 +61,7 @@ in
     ''
     ${pkgs.sxhkd}/bin/sxhkd -c ${./sxhkd/sxhkdrc}&
     ${localPkgs.dwmblocks}/bin/dwmblocks &
-    ${pkgs.pywal}/bin/wal -i ${./wallpapers}
+    ${localPkgs.pywal}/bin/wal -i ${./wallpapers}
     exec ${localPkgs.dwm}/bin/dwm
     '';
 
