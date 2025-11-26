@@ -1,0 +1,11 @@
+super + Return
+	st
+
+super + d
+	dmenu_run
+
+super + shift + Return
+        st -d "$(pwdx $(pgrep -P $(xdotool getwindowpid $(xdo id))) | cut -d ' ' -f 2-)"
+
+super + n
+	networkmanager_dmenu -l 30

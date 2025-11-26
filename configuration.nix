@@ -53,7 +53,7 @@ in
   services.xserver.displayManager.startx.generateScript = true;
   services.xserver.displayManager.startx.extraCommands =
     ''
-    ${pkgs.sxhkd}/bin/sxhkd &
+    ${pkgs.sxhkd}/bin/sxhkd -c ${./sxhkd/sxhkdrc}&
     ${localPkgs.dwmblocks}/bin/dwmblocks &
     ${pkgs.pywal}/bin/wal -i /home/chester/Wallpapers
     exec ${localPkgs.dwm}/bin/dwm
@@ -126,6 +126,7 @@ in
     jre21_minimal
     z3
     boogie
+    xclip
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
