@@ -13,6 +13,7 @@ let
     st = (import ./st/st.nix { pkgs = pkgs; });
     dmenu = (import ./dmenu/dmenu.nix { pkgs = pkgs; });
     dwmblocks = (import ./dwmblocks/dwmblocks.nix { pkgs = pkgs; });
+    pywal = (import ./pywal/pywal.nix);
   };
 in
 
@@ -125,6 +126,8 @@ in
     z3
     boogie
     xclip
+    localPkgs.pywal
+    python314
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
