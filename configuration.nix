@@ -13,7 +13,14 @@ let
     st = (import ./st/st.nix { pkgs = pkgs; });
     dmenu = (import ./dmenu/dmenu.nix { pkgs = pkgs; });
     dwmblocks = (import ./dwmblocks/dwmblocks.nix { pkgs = pkgs; });
-    pywal = (import ./pywal/pywal.nix);
+    pywal = import ./pywal/pywal.nix {
+      lib = lib;
+      buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+      fetchPypi = pkgs.python3Packages.fetchPypi;
+      imagemagick = pkgs.imagemagick;
+      feh = pkgs.feh;
+      isPy3k = true;
+    };
   };
 in
 
