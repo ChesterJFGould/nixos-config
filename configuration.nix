@@ -3,8 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 # TODO:
 #   pywal xresources template
-#   wallpapers
-#   sxhkd config
 
 { config, lib, pkgs, ... }:
 
@@ -55,7 +53,7 @@ in
     ''
     ${pkgs.sxhkd}/bin/sxhkd -c ${./sxhkd/sxhkdrc}&
     ${localPkgs.dwmblocks}/bin/dwmblocks &
-    ${pkgs.pywal}/bin/wal -i /home/chester/Wallpapers
+    ${pkgs.pywal}/bin/wal -i ${./wallpapers}
     exec ${localPkgs.dwm}/bin/dwm
     '';
 
