@@ -55,7 +55,7 @@ in
   services.xserver.displayManager.startx.extraCommands =
     ''
     ${pkgs.sxhkd}/bin/sxhkd &
-    ${pkgs.dwmblocks}/bin/dwmblocks &
+    ${localPkgs.dwmblocks}/bin/dwmblocks &
     ${pkgs.pywal}/bin/wal -i /home/chester/Wallpapers
     exec ${localPkgs.dwm}/bin/dwm
     '';
@@ -112,6 +112,13 @@ in
     xdo
     xdotool
     bsdgames
+    networkmanager_dmenu
+    networkmanagerapplet
+    cacert
+    vscodium
+    jre21_minimal
+    z3
+    boogie
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
