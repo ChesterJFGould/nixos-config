@@ -42,7 +42,8 @@ derivation {
     #define CLICKABLE_BLOCKS
 
     const Block blocks[] = {
-            BLOCK("${./time.sh}",    5, 19),
+            BLOCK("${./bat.sh}", 5, 19),
+            BLOCK("${./time.sh}", 5, 20),
             };
     '';
 }

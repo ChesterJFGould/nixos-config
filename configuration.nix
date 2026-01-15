@@ -1,8 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-# TODO:
-#   pywal xresources template
 
 { config, lib, pkgs, ... }:
 
@@ -111,6 +109,7 @@ in
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    bash
     vim
     wget
     git
@@ -134,7 +133,20 @@ in
     boogie
     xclip
     localPkgs.pywal
-    python314
+    python313
+    openblas
+    xorg.xbacklight
+    unzip
+    haskell.compiler.ghcHEAD
+    zathura
+    texlive.combined.scheme-full
+    latexrun
+    entr
+    libreoffice
+    logseq
+    gnumake
+    gcc
+    scc
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
