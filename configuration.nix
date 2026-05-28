@@ -84,7 +84,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.chester = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -147,7 +147,23 @@ in
     gnumake
     gcc
     scc
+    arandr
+    nasm
+    pavucontrol
+    libimobiledevice
+    ifuse
+    libirecovery
+    p7zip
+    hexedit
+    chez
+    obsidian
+    mysql84
+    stack
+    idris2
+    beluga
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -163,7 +179,15 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.avahi.enable = true;
 
+  services.usbmuxd = {
+    enable = true;
+    package = pkgs.usbmuxd2;
+  };
+
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mysql84;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
