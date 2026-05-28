@@ -11,4 +11,4 @@ super + n
 	networkmanager_dmenu -l 30
 
 super + p
-	find ~/Clone/notes/assets/ | grep .*pdf | dmenu -l 30 | xargs -I? zathura '?'
+	find /home/chester/Clone/notes/assets/ | grep .*pdf | dmenu -l 30 | xargs -I? zathura '?'
